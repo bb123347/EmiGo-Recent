@@ -42,3 +42,6 @@ app-example
 .metro-virtual/*
 
 caches/*
+# Build artifacts / local debug files
+*.ipa
+*.bak

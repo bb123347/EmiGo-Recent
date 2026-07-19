@@ -27,7 +27,22 @@ import {
   getMyRsvpStatus,
 } from "../../../utils/rsvp";
 import { getUserAccount } from "../../../utils/account";
-import MapView, { Marker } from "react-native-maps";
+
+// react-native-maps pulls in a native component via requireNativeComponent,
+// which THROWS at import time if the native module isn't registered in the
+// build. Because expo-router eagerly requires every route file at bootstrap,
+// an unguarded top-level import here can crash the whole app to a white screen
+// before anything renders. Load it defensively so a missing/misbehaving native
+// module just disables the inline map instead of taking down the entire app.
+let MapView: any = null;
+let Marker: any = null;
+try {
+  const maps = require("react-native-maps");
+  MapView = maps.default ?? maps.MapView ?? null;
+  Marker = maps.Marker ?? null;
+} catch (e) {
+  console.warn("[EventDetail] react-native-maps unavailable:", e);
+}
 
 export default function EventDetailScreen() {
   const router = useRouter();
@@ -592,7 +607,7 @@ disabled={rsvpLoading}
 
             {!!addressLine && <Text style={styles.cardText}>{addressLine}</Text>}
 
-            {hasCoordinates ? (
+            {hasCoordinates && MapView && Marker ? (
   <Pressable onPress={handleOpenMaps} style={styles.mapPreview}>
     <MapView
       pointerEvents="none"

@@ -6,7 +6,7 @@ index 2a0ee73..fe27e70 100644
  const getReactNavigationConfig_1 = require("./getReactNavigationConfig");
  const getRoutesRedirects_1 = require("./getRoutesRedirects");
  const linking_1 = require("./link/linking");
-+const isAnythingApp = expo_modules_core_1.Platform.OS !== 'web' && process.env.EXPO_PUBLIC_IS_ANYTHING_APP === JSON.stringify(true);
++const isAnythingApp = expo_modules_core_1.Platform.OS !== 'web';
  function getNavigationConfig(routes, metaOnly, { sitemap, notFound }) {
      const config = (0, getReactNavigationConfig_1.getReactNavigationConfig)(routes, metaOnly);
      const sitemapRoute = (() => {
@@ -30,7 +30,7 @@ index b9535b5..03fd8ee 100644
  const useLinking_1 = require("../fork/useLinking");
  const getRoutesRedirects_1 = require("../getRoutesRedirects");
  const isExpoGo = typeof expo !== 'undefined' && globalThis.expo?.modules?.ExpoGo;
-+const isAnythingApp = react_native_1.Platform.OS !== 'web' && process.env.EXPO_PUBLIC_IS_ANYTHING_APP === JSON.stringify(true);
++const isAnythingApp = react_native_1.Platform.OS !== 'web';
  // A custom getInitialURL is used on native to ensure the app always starts at
  // the root path if it's launched from something other than a deep link.
  // This helps keep the native functionality working like the web functionality.

@@ -1,19 +1,23 @@
 {
   "expo": {
-    "name": "Anything mobile app",
-    "version": "1.0.0",
+    "name": "EmiGo Now",
+    "slug": "anything-mobile-app",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-
     "scheme": "emigo",
-
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      }
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCalendarsUsageDescription": "EmiGo may access your calendar so you can add events you RSVP to.",
+        "NSCameraUsageDescription": "EmiGo may access your camera so you can take or upload a profile photo or event photo.",
+        "NSContactsUsageDescription": "EmiGo may access your contacts to help you find or invite friends."
+      },
+      "bundleIdentifier": "com.emigo.emigo",
+      "buildNumber": "6"
     },
     "android": {
       "adaptiveIcon": {
@@ -27,13 +31,7 @@
       "package": "xyz.create.CreateExpoEnvironment"
     },
     "plugins": [
-      [
-        "expo-router",
-        {
-          "sitemap": false,
-          "root": "./src/app"
-        }
-      ],
+      "expo-router",
       [
         "expo-splash-screen",
         {
@@ -43,14 +41,6 @@
         }
       ],
       "expo-audio",
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "useFrameworks": "static"
-          }
-        }
-      ],
       [
         "expo-video",
         {
@@ -70,12 +60,13 @@
       "typedRoutes": true
     },
     "extra": {
-      "router": {
-        "origin": false
+      "eas": {
+        "projectId": "cae282d8-faff-4d78-85fe-81a756b9cd5a"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
-    }
+    },
+    "owner": "bbrealestate123"
   }
 }
